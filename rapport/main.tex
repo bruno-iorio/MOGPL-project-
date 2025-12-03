@@ -1,0 +1,126 @@
+\documentclass[11pt,letterpaper]{article}
+
+% ============================================
+% PACKAGES
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+
+% ============================================
+% PAGE SETUP
+% ============================================
+\geometry{
+    top=2cm,
+    bottom=2cm,
+    left=2.5cm,
+    right=2.5cm
+}
+
+% ============================================
+% HEADER AND FOOTER
+% ============================================
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{\coursename}}
+\rhead{\textbf{\studentname}}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ============================================
+% HOMEWORK INFO (EDIT THESE)
+% ============================================
+\newcommand{\coursename}{MOGPL}
+\newcommand{\studentname}{Bruno Fernandes Iorio \& Gildas}
+
+% ============================================
+% CUSTOM ENVIRONMENTS
+% ============================================
+
+% Problem environment
+\newcounter{problemcounter}
+\newenvironment{problem}[1][]{%
+    \refstepcounter{problemcounter}%
+    \par\vspace{1em}%
+    \noindent\textbf{Problem \theproblemcounter\ifx&#1&\else: #1\fi}%
+    \par\vspace{0.5em}%
+}{\par\vspace{1em}}
+
+% Solution environment
+\newenvironment{solution}{%
+    \par\vspace{0.5em}%
+    \noindent\textit{Solution:}%
+    \par\vspace{0.3em}%
+}{\par\vspace{1em}}
+
+% Boxed solution for final answers
+\newtcolorbox{answerbox}{
+    colback=blue!5!white,
+    colframe=blue!50!black,
+    boxrule=0.5pt,
+    arc=2pt,
+    left=5pt,
+    right=5pt,
+    top=5pt,
+    bottom=5pt
+}
+
+% ============================================
+% MATH SHORTCUTS
+% ============================================
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\der}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+
+% ============================================
+% DOCUMENT
+% ============================================
+\begin{document}
+
+% ============================================
+% TITLE SECTION
+% ============================================
+\begin{center}
+    {\Large\textbf{\coursename}}\\[0.3em]
+    \begin{tabular}{rl}
+        \textbf{Name:} & \studentname \\
+    \end{tabular}
+\end{center}
+
+\hrule
+\vspace{1em}
+
+% ============================================
+% PROBLEMS
+% ============================================
+\noindent
+\textbf{(a)} 
+Soit $G$ l'ensemble de sommets du grille $N$ x $M$ et $O \subset G$ l'ensemble de sommets obstacles. Pour chaque point $(x,y) \in G$ et chaque direction $dir$, on considere le sommet $(x,y,dir)$, en indicant que 
+qu'on face vers $dir$ au point $(x,y)$. La commande avance($k$) est representee par l'arc orientee entre deux sommet avec la meme direction et une distance $k\in\{1,2,3\}$. 
+La commande tourne est represantee par l'arc 
+orientee entre deux sommets avec les memes coordonnees $x, y$, mais des directions differentes.
+
+Pour avoir que chaque commande aie un cout unitaire, on definit les arc sortantes suivantes pour chaque $(x,y) \notin O$:
+\begin{itemize}
+  \item $(x,y,nord) \longrightarrow  \{(x,y,est), (x,y,ouest)\} \cup \{(x-i,y,nord) : i \in \{1,2,3\}, N > x-i \geq 0, (x-i, y) \notin O\}$
+  \item $(x,y,est) \longrightarrow  \{(x,y,nord), (x,y,sud)\} \cup \{(x,y+i,est) : i \in \{1,2,3\}, N > y+i \geq 0, (x, y+i) \notin O\}$
+  \item $(x,y,sud) \longrightarrow  \{(x,y,ouest), (x,y,est)\} \cup \{(x+i,y,sud) : i \in \{1,2,3\}, N > x+i \geq 0, (x+i, y) \notin O\}$
+  \item $(x,y,ouest) \longrightarrow  \{(x,y,sud), (x,y,nord)\} \cup \{(x,y-i,ouest) : i \in \{1,2,3\}, M > y-i \geq 0, (x, y-i) \notin O\}$
+\end{itemize}
+
+\end{document}
