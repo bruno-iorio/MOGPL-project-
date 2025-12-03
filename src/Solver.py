@@ -39,7 +39,6 @@ class Solver:
         return bestPath[(graph.endx,graph.endy,finalOrientation)]
 
     def writeOutput(self, bestPath, filename=None):
-        print(type(bestPath))
         outStr = f"{len(bestPath)-1} "
         for i in range(len(bestPath)):
             if i == len(bestPath) - 1:
@@ -49,7 +48,7 @@ class Solver:
             if currOrientation == nextOrientation:
                 outStr += f'a{max(abs(currX - nextX),abs(currY - nextY))} '
             else: 
-                if (self.directionDict[nextOrientation] - self.directionDict[currOrientation]) == 1: 
+                if (self.directionDict[nextOrientation] - self.directionDict[currOrientation]) % 4 == 1:
                     outStr += "G "
                 else:
                     outStr += "D "

@@ -12,7 +12,7 @@ def testRandomGraphs():
         print(solver.writeOutput(solver.bfsSolver(g)))
 
         
-#testRandomGraphs()
+testRandomGraphs()
 p = Parser()
 initX, initY, endX, endY, width, length, initOrientation, listBlocked =p.parseFile("examples/ex1.txt")
 g = Graph(initX, initY, endX, endY, width, length, initOrientation, listBlocked)
