@@ -117,10 +117,10 @@ orientee entre deux sommets avec les memes coordonnees $x, y$, mais des directio
 
 Pour avoir que chaque commande aie un cout unitaire, on definit les arc sortantes suivantes pour chaque $(x,y) \notin O$:
 \begin{itemize}
-  \item $(x,y,nord) \longrightarrow  \{(x,y,est), (x,y,ouest)\} \cup \{(x-i,y,nord) : i \in \{1,2,3\}, N > x-i \geq 0, (x-i, y) \notin O\}$
-  \item $(x,y,est) \longrightarrow  \{(x,y,nord), (x,y,sud)\} \cup \{(x,y+i,est) : i \in \{1,2,3\}, N > y+i \geq 0, (x, y+i) \notin O\}$
-  \item $(x,y,sud) \longrightarrow  \{(x,y,ouest), (x,y,est)\} \cup \{(x+i,y,sud) : i \in \{1,2,3\}, N > x+i \geq 0, (x+i, y) \notin O\}$
-  \item $(x,y,ouest) \longrightarrow  \{(x,y,sud), (x,y,nord)\} \cup \{(x,y-i,ouest) : i \in \{1,2,3\}, M > y-i \geq 0, (x, y-i) \notin O\}$
+  \item $(x,y,sud) \longrightarrow  \{(x,y,ouest), (x,y,est)\} \cup \{(x,y+i,sud) : i \in \{1,2,3\}, M > y+i \geq 0, (x, y+i) \notin O\}$
+  \item $(x,y,nord) \longrightarrow  \{(x,y,est), (x,y,ouest)\} \cup \{(x,y-i,nord) : i \in \{1,2,3\}, M > y-i \geq 0, (x, y-i) \notin O\}$
+  \item $(x,y,est) \longrightarrow  \{(x,y,sud), (x,y,nord)\} \cup \{(x+i,y,est) : i \in \{1,2,3\}, N > x+i \geq 0, (x+i, y) \notin O\}$
+  \item $(x,y,ouest) \longrightarrow  \{(x,y,nord), (x,y,sud)\} \cup \{(x-i,y,ouest) : i \in \{1,2,3\}, N > x-i \geq 0, (x-i, y) \notin O\}$
 \end{itemize}
 
 \end{document}
