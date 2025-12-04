@@ -7,22 +7,21 @@ class Solver:
             'est':3
         }
 
-    def bfsSolver(self,graph): # bfs algo in a not-weighted directed graph gives shortest path -> 
+    def bfsSolver(self,graph): # bfs algo in a not-weighted directed graph gives shortest path ->
                                # O(V + E) = O(length*width)
         currX = graph.currX
         currY = graph.currY
         currOrientation = graph.currOrientation
-
         idx = (currX, currY, currOrientation)
-
         queue = [idx]
         visited = []
         bestPath = dict()
         finalOrientation = None
+
         while len(queue) > 0:
             node = queue.pop(0)
             if (node[0],node[1]) in graph.blockedList:
-                raise Exception("Error: here")
+                raise Exception("Error: graph was incorrectly generated or parsed!")
             if (node[0], node[1]) == (graph.endx , graph.endy):
                 finalOrientation = node[2]
                 break
@@ -59,4 +58,54 @@ class Solver:
         else: 
             print(outStr)
         return outStr
+
+    def checkCorrectness(self,init_pos,end_pos,init_dir,graph,ans): ## not tested yet
+        ans = ans.split()
+        n = int(ans[0])
+        dir = self.directionDict[init_dir]
+        currpos = init_pos
+        for i in range(n):
+            if ans[i] == "D":
+                dir += 1
+                dir = dir % 4
+            elif ans[i] == "G":
+                dir -= 1 
+                dir = dir % 4
+            else: ## ans[i] = ak
+                k = int(ans[i][1])
+                if dir == 0: # nord
+                    if currpos[1] - k <= 0:
+                        raise Exception("wrong value!")
+                    for m in range(1,k+1):
+                        if (currpos[0], currpos[1] - m) in graph.blockedList:
+                            raise Exception("wrong value!")
+                    currpos[1] -= k
+                elif dir == 1: # ouest
+                    if currpos[0] + k >= graph.width:
+                        raise Exception("wrong value!")
+                    for m in range(1,k+1):
+                        if (currpos[0]+m, currpos[1]) in graph.blockedList:
+                            raise Exception("wrong value!")
+                    currpos[0] += k
+                elif dir == 2: # sud
+                    if currpos[1] + k >= graph.length:
+                        raise Exception("wrong value!")
+                    for m in range(1,k+1):
+                        if (currpos[0], currpos[1] + m) in graph.blockedList:
+                            raise Exception("wrong value!")
+                    currpos[1] += k
+                else: # est
+                    if currpos[0] - k <= 0:
+                        raise Exception("wrong value!")
+                    for m in range(1,k+1):
+                        if (currpos[0] - m, currpos[1]) in graph.blockedList:
+                            raise Exception("wrong value!")
+                    currpos[0] -= k
+
+        if currpos != end_pos:
+            raise Exception("wrong end_pos")
+        else: 
+            print("correctness verified!")
+
+
 
