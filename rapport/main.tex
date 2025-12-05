@@ -125,8 +125,59 @@ Soit $E$ l'ensemble des arcs du graphe. Pour que chaque commande ait un coût un
 \noindent
 \textbf{(b)} On étudie la complexité de l'algorithme bfsSolver présent dans le fichier Solver.py. L'objectif de l'algorithme est de trouver le plus court chemin entre deux points. Pour ce faire, on examine les chemins possibles entre le point d'entrée et le point de d'arrivée. Chaque sommet $(x, y, dir)$ est inséré au plus une fois dans la file. Donc, on parcours $4\times N\times M$ sommet. De plus, chaque arête est explorée une seule fois. On en déduit que l'algorithme bfsSolver a une complexité en $O(4NM + E)$. Or l'ensembles des arcs dépend de la taille de la grille. Au final, la complexité de l'algorithme est $O(4NM + E) = O(4NM + O(NM)) = O(NM)$
 
+\newline
+\noindent
+\textbf{(c)}
+Temps d'exécution moyens en fonction de la taille de la grille :
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Taille de la grille} & \textbf{Temps moyen (sec)} \\
+\hline
+$10 \times 10$ & 0.000897 \\
+\hline
+$20 \times 20$ & 0.010343 \\
+\hline
+$30 \times 30$ & 0.050940 \\
+\hline
+$40 \times 40$ & 0.222723 \\
+\hline
+$50 \times 50$ & 0.530197 \\
+\hline
+\end{tabular}
+\end{table}
+
+\newline
 
 \noindent
+\textbf{(d)}
+Temps d'exécution moyens en fonction du nombre d'obstacles :
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Nombre d'obstacles} & \textbf{Temps moyen (sec)} \\
+\hline
+10 & 0.012374 \\
+\hline
+20 & 0.007275 \\
+\hline
+30 & 0.008942 \\
+\hline
+40 & 0.006518 \\
+\hline
+50 & 0.002126 \\
+\hline
+\end{tabular}
+\label{tab:temps_moyens_obstacles}
+\end{table}
+
+\newline
+\noindent
+
+
 \textbf{(e)} Le problème énoncé peut être modélisé de la manière suivante:
 $$\min{\sum_{i = 0}^{M - 1} \sum_{j = 0}^{N - 1} x_{i,j}w_{i,j}}$$
 $$\left\{
