@@ -123,4 +123,20 @@ Pour avoir que chaque commande aie un cout unitaire, on definit les arc sortante
   \item $(x,y,ouest) \longrightarrow  \{(x,y,nord), (x,y,sud)\} \cup \{(x-i,y,ouest) : i \in \{1,2,3\}, N > x-i \geq 0, (x-i, y) \notin O\}$
 \end{itemize}
 
+\noindent
+\textbf{(e)} Le problème énoncé peut être modélisé de la manière suivante:
+$$\min{\sum_{i = 0}^{M - 1} \sum_{j = 0}^{N - 1} x_{i,j}w_{i,j}}$$
+$$\left\{
+\begin{array}{ll}
+\displaystyle \sum_{i=0}^{M-1} \sum_{j=0}^{N-1} x_{i,j} = P \\[15pt]
+\displaystyle \sum_{j=0}^{N-1} x_{i,j} \leq \frac{2P}{M} & \forall i \in \{0, \ldots, M-1\} \\[15pt]
+\displaystyle \sum_{i=0}^{M-1} x_{i,j} \leq \frac{2P}{N} & \forall j \in \{0, \ldots, N-1\} \\[15pt]
+x_{i,j} + x_{i,j+2} - x_{i,j+1} \leq 1 & \forall i \in \{0, \ldots, M-1\}, \; \forall j \in \{0, \ldots, N-3\} \\[15pt]
+x_{i,j} + x_{i+2,j} - x_{i+1,j} \leq 1 & \forall i \in \{0, \ldots, M-3\}, \; \forall j \in \{0, \ldots, N-1\} \\[15pt]
+x_{i,j} \in \{0,1\}
+\end{array}
+\right.$$
 \end{document}
+
+
+
