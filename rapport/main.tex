@@ -41,7 +41,7 @@
 % HOMEWORK INFO (EDIT THESE)
 % ============================================
 \newcommand{\coursename}{MOGPL}
-\newcommand{\studentname}{Bruno Fernandes Iorio \& Gildas}
+\newcommand{\studentname}{Bruno Fernandes Iorio \& Gildas De Michiel}
 
 % ============================================
 % CUSTOM ENVIRONMENTS
@@ -110,18 +110,21 @@
 % ============================================
 \noindent
 \textbf{(a)} 
-Soit $G$ l'ensemble de sommets du grille $N$ x $M$ et $O \subset G$ l'ensemble de sommets obstacles. Pour chaque point $(x,y) \in G$ et chaque direction $dir$, on considere le sommet $(x,y,dir)$, en indicant que 
-qu'on face vers $dir$ au point $(x,y)$. La commande avance($k$) est representee par l'arc orientee entre deux sommet avec la meme direction et une distance $k\in\{1,2,3\}$. 
-La commande tourne est represantee par l'arc 
-orientee entre deux sommets avec les memes coordonnees $x, y$, mais des directions differentes.
+Soit $G$ l'ensemble de sommets de la grille $N$ x $M$ et $O \subset G$ l'ensemble des sommets obstacles. Pour chaque point $(x,y) \in G$ et chaque direction $dir$, on considère le sommet $(x,y,dir)$, en n'indiquant qu'au point $(x,y)$, on fait face à la direction $dir$. La commande avance($k$) est représentée par l'arc orienté entre deux sommets ayant la même direction et une distance $k\in\{1,2,3\}$. 
+La commande tourne est représentée par l'arc 
+orienté entre deux sommets ayant les mêmes coordonnées $x, y$, mais ayant des directions différentes.
 
-Pour avoir que chaque commande aie un cout unitaire, on definit les arc sortantes suivantes pour chaque $(x,y) \notin O$:
+Soit $E$ l'ensemble des arcs du graphe. Pour que chaque commande ait un coût unitaire, on définit l'ensemble des arcs sortants  suivants pour chaque $(x,y) \notin O$:
 \begin{itemize}
   \item $(x,y,sud) \longrightarrow  \{(x,y,ouest), (x,y,est)\} \cup \{(x,y+i,sud) : i \in \{1,2,3\}, M > y+i \geq 0, (x, y+i) \notin O\}$
   \item $(x,y,nord) \longrightarrow  \{(x,y,est), (x,y,ouest)\} \cup \{(x,y-i,nord) : i \in \{1,2,3\}, M > y-i \geq 0, (x, y-i) \notin O\}$
   \item $(x,y,est) \longrightarrow  \{(x,y,sud), (x,y,nord)\} \cup \{(x+i,y,est) : i \in \{1,2,3\}, N > x+i \geq 0, (x+i, y) \notin O\}$
   \item $(x,y,ouest) \longrightarrow  \{(x,y,nord), (x,y,sud)\} \cup \{(x-i,y,ouest) : i \in \{1,2,3\}, N > x-i \geq 0, (x-i, y) \notin O\}$
 \end{itemize}
+
+\noindent
+\textbf{(b)} On étudie la complexité de l'algorithme bfsSolver présent dans le fichier Solver.py. L'objectif de l'algorithme est de trouver le plus court chemin entre deux points. Pour ce faire, on examine les chemins possibles entre le point d'entrée et le point de d'arrivée. Chaque sommet $(x, y, dir)$ est inséré au plus une fois dans la file. Donc, on parcours $4\times N\times M$ sommet. De plus, chaque arête est explorée une seule fois. On en déduit que l'algorithme bfsSolver a une complexité en $O(4NM + E)$. Or l'ensembles des arcs dépend de la taille de la grille. Au final, la complexité de l'algorithme est $O(4NM + E) = O(4NM + O(NM)) = O(NM)$
+
 
 \noindent
 \textbf{(e)} Le problème énoncé peut être modélisé de la manière suivante:
@@ -133,10 +136,8 @@ $$\left\{
 \displaystyle \sum_{i=0}^{M-1} x_{i,j} \leq \frac{2P}{N} & \forall j \in \{0, \ldots, N-1\} \\[15pt]
 x_{i,j} + x_{i,j+2} - x_{i,j+1} \leq 1 & \forall i \in \{0, \ldots, M-1\}, \; \forall j \in \{0, \ldots, N-3\} \\[15pt]
 x_{i,j} + x_{i+2,j} - x_{i+1,j} \leq 1 & \forall i \in \{0, \ldots, M-3\}, \; \forall j \in \{0, \ldots, N-1\} \\[15pt]
-x_{i,j} \in \{0,1\}
+x_{i,j} \in \{0,1\},
+0\le  w_{i,j} \le 1000, \ w_{i,j} \in \mathbb{N}
 \end{array}
 \right.$$
 \end{document}
-
-
-
