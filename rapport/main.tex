@@ -176,9 +176,10 @@ Temps d'exécution moyens en fonction du nombre d'obstacles :
 
 \newline
 \noindent
+\textbf{(e)} Pour $i \in \{0, \ldots, M-1\}$ et $ j \in \{0, \ldots, N-1\}$, on définit les variables $w_{i,j}$ tel que $w_{i,j} \in \{0, \ldots, 1000\}$.
 
+Le problème énoncé peut être modélisé de la manière suivante: 
 
-\textbf{(e)} Le problème énoncé peut être modélisé de la manière suivante:
 $$\min{\sum_{i = 0}^{M - 1} \sum_{j = 0}^{N - 1} x_{i,j}w_{i,j}}$$
 $$\left\{
 \begin{array}{ll}
@@ -187,8 +188,7 @@ $$\left\{
 \displaystyle \sum_{i=0}^{M-1} x_{i,j} \leq \frac{2P}{N} & \forall j \in \{0, \ldots, N-1\} \\[15pt]
 x_{i,j} + x_{i,j+2} - x_{i,j+1} \leq 1 & \forall i \in \{0, \ldots, M-1\}, \; \forall j \in \{0, \ldots, N-3\} \\[15pt]
 x_{i,j} + x_{i+2,j} - x_{i+1,j} \leq 1 & \forall i \in \{0, \ldots, M-3\}, \; \forall j \in \{0, \ldots, N-1\} \\[15pt]
-x_{i,j} \in \{0,1\},
-0\le  w_{i,j} \le 1000, \ w_{i,j} \in \mathbb{N}
+x_{i,j} \in \{0,1\}
 \end{array}
 \right.$$
 \end{document}
