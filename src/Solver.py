@@ -17,6 +17,10 @@ class Solver:
         visited = []
         bestPath = dict()
         finalOrientation = None
+        
+        if(currX, currY) in graph.blockedList:
+            print("Position de départ non valide")
+            return None
 
         while len(queue) > 0:
             node = queue.pop(0)
@@ -35,9 +39,17 @@ class Solver:
                 id = (nd[0],nd[1],nd[2])
                 if id not in bestPath.keys():
                     bestPath[id] = bestPath[node] + [nd]
+        if(finalOrientation not in ['sud','nord','est','ouest']):
+            print("Erreur, il n'y a pas de chemin possible")
+            return None
         return bestPath[(graph.endx,graph.endy,finalOrientation)]
 
-    def writeOutput(self, bestPath, filename=None):
+    def writeOutput(self, bestPath, filename="examples/sortie.txt"):
+        if(bestPath == None):
+            print("Aucun chemin trouvé")
+            with open("examples/sortie.txt", "w") as f:
+                f.write("-1")
+                return "-1"
         outStr = f"{len(bestPath)-1} "
         for i in range(len(bestPath)):
             if i == len(bestPath) - 1:
@@ -55,9 +67,9 @@ class Solver:
         if filename is not None: 
             with open(filename,"+w") as f:
                 f.write(outStr)
-        else: 
-            print(outStr)
+                return outStr
         return outStr
+        
 
     def checkCorrectness(self,init_pos,end_pos,init_dir,graph,ans): ## not tested yet
         ans = ans.split()
@@ -106,6 +118,5 @@ class Solver:
             raise Exception("wrong end_pos")
         else: 
             print("correctness verified!")
-
 
 
