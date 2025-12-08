@@ -9,15 +9,15 @@ class Node:
 
 class Graph:
     def __init__(self, initx, inity, endx, endy, width, length, initialOrientation, blockedList):
-        if (initx < 0 or initx >= width):
+        if (initx < 0 or initx > width):
             raise Exception("GraphCreationError: invalid initx value!")
-        if (inity < 0 or inity >= length):
+        if (inity < 0 or inity > length):
             raise Exception("GraphCreationError: invalid inity value!")
         if ((initx, inity) in blockedList):
             raise Exception("GraphCreationError: invalid initial position!")
-        if (endx < 0 or endx>= width):
+        if (endx < 0 or endx > width):
             raise Exception("GraphCreationError: invalid endx value!")
-        if (endy < 0 or endy >= length):
+        if (endy < 0 or endy > length):
             raise Exception("GraphCreationError: invalid endy value!")
         if ((endx, endy) in blockedList):
             raise Exception("GraphCreationError: invalid final position!")
@@ -35,7 +35,7 @@ class Graph:
         self.Nodes = dict()
 
     def __str__(self):
-        out = f'{self.length - 1} {self.width - 1} \n'
+        out = f'{self.length} {self.width} \n'
         for j in range(self.length):
             for i in range(self.width):
                 if (i,j) in self.blockedList and (i+1,j) in self.blockedList and (i,j+1) in self.blockedList and (i+1,j+1) in self.blockedList:
@@ -48,8 +48,8 @@ class Graph:
         return out
         
     def createGraph(self):
-        for i in range(self.width):
-            for j in range(self.length):
+        for i in range(self.width + 1):
+            for j in range(self.length +1):
                 if (i,j) not in self.blockedList:
                     for dir in ['sud','nord','est','ouest']:
                         self.Nodes[(i,j,dir)] = Node(i,j,dir)
@@ -67,14 +67,14 @@ class Graph:
             self.Nodes[idx].next.extend([(x,y,'est'), (x,y,'ouest')])
         if dir == "est":
             for k in range(1,4):
-                if x + k <= self.width - 1 and (x+k, y) not in self.blockedList:
+                if x + k <= self.width  and (x+k, y) not in self.blockedList:
                     self.Nodes[idx].next.append((x+k,y,dir))
                 if (x+k,y) in self.blockedList:
                     break
             self.Nodes[idx].next.extend([(x,y,'nord'), (x,y,'sud')])
         if dir == "sud":
             for k in range(1,4):
-                if y+k <= self.length-1 and (x, y+k) not in self.blockedList:
+                if y+k <= self.length and (x, y+k) not in self.blockedList:
                     self.Nodes[idx].next.append((x,y+k,dir))
                 if (x,y+k) in self.blockedList:
                     break

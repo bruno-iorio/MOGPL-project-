@@ -58,11 +58,11 @@ def main():
 
 
     print("\n--- Choisissez un point de départ ---")
-    start_x, start_y = ask_coordinates(N-1, M-1)
+    start_x, start_y = ask_coordinates(N, M)
     while (start_x, start_y) in obstacles:
         print("Ce point contient un obstacle. Choisissez un autre point.")
         print("\n--- Choisissez un point de départ ---")
-        start_x, start_y = ask_coordinates(N-1, M-1)
+        start_x, start_y = ask_coordinates(N, M)
 
     orientation = ask_orientation()
     while orientation not in ["nord", "sud", "est", "ouest"]:
@@ -71,11 +71,11 @@ def main():
 
 
     print("\n--- Choisissez un point d'arrivée ---")
-    end_x, end_y = ask_coordinates(N-1, M-1)
+    end_x, end_y = ask_coordinates(N, M)
     while (end_x, end_y) in obstacles or (end_x, end_y) == (start_x, start_y):
         print("Ce point contient un obstacle ou est identique au point de départ. Choisissez un autre point.")
         print("\n--- Choisissez un point d'arrivée ---")
-        end_x, end_y = ask_coordinates(N-1, M-1)
+        end_x, end_y = ask_coordinates(N, M)
 
 
     print("\n--- Construction du graphe ---")
@@ -108,12 +108,12 @@ def testRandomGraphs():
 
 
 #Affichage de la solution pour la matrice du fichier ex1.txt situé dans le repertoir examples
-p = Parser()
-initX, initY, endX, endY, width, length, initOrientation, listBlocked =p.parseFile("examples/ex1.txt")
-g = Graph(initX, initY, endX, endY, width, length, initOrientation, listBlocked)
-g.createGraph()
-print(g)
-solver = Solver()
-print(solver.writeOutput(solver.bfsSolver(g)))
+#p = Parser()
+#initX, initY, endX, endY, width, length, initOrientation, listBlocked =p.parseFile("examples/ex1.txt")
+#g = Graph(initX, initY, endX, endY, width, length, initOrientation, listBlocked)
+#g.createGraph()
+#print(g)
+#solver = Solver()
+#print(solver.writeOutput(solver.bfsSolver(g)))
 # Affichage d'un graphe choisit par l'utilisateur selon les contraintes de la question (e)
 print(main())

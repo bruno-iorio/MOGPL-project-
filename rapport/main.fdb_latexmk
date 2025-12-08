@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1764945653.60467 "main.tex" "main.pdf" "main" 1764945654.25251 0
+["pdflatex"] 1765216852.28578 "main.tex" "main.pdf" "main" 1765216852.93404 0
   "/home/bruno/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk" 1764787357.4668 28952 5f3880a1604cd1838f0c5abf61c72535 ""
   "/home/bruno/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk" 1764787356.9598 40112 1814bdf7a0e9ec592cf7094633ca585e ""
   "/home/bruno/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk" 1764787356.5208 26208 b167a8862b453eb2caab9706f0bd322c ""
@@ -164,9 +164,9 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1755987285 42087 b0f9697c952c8f5a8eede4134282cb0d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1762215523 30070 2c390b00126b1036e8876b6c3ea4d747 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1762215485 2008243 152a6645617e242df42358469bf13ba8 ""
-  "main.aux" 1764945654.16213 257 5be5fd6c2cc7cf225596bead76801f9a "pdflatex"
-  "main.out" 1764945654.1429 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1764945653.50812 4812 1c2127081beb29823c2feb30a3dbca3f ""
+  "main.aux" 1765216852.86021 317 38b181659f4681b046741c51905ce5df "pdflatex"
+  "main.out" 1765216852.83238 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1765216852.07818 6696 f2a141f77d9e3366ef62ad6bbe1fcb73 ""
   (generated)
   "main.aux"
   "main.log"

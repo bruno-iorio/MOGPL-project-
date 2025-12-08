@@ -51,7 +51,12 @@ def generate_obstacles(M, N, P):
     # Max obstacles per row
     for i in range(M):
         model.addConstr(
-            gp.quicksum(x[i, j] for j in range(N)) <= 2 * P // M
+            sum(x[i, j] for j in range(N)) <= 2 * P // M
+        )
+    # Max obstacles per col
+    for j in range(N):
+        model.addConstr(
+            sum(x[i, j] for i in range(M)) <= 2 * P // N
         )
 
     # No 101 in rows
