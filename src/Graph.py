@@ -36,8 +36,8 @@ class Graph:
 
     def __str__(self):
         out = f'{self.length - 1} {self.width - 1} \n'
-        for j in range(self.length-1):
-            for i in range(self.width-1):
+        for j in range(self.length):
+            for i in range(self.width):
                 if (i,j) in self.blockedList and (i+1,j) in self.blockedList and (i,j+1) in self.blockedList and (i+1,j+1) in self.blockedList:
                     out += "1 "
                 else:
@@ -46,6 +46,7 @@ class Graph:
         out += f'{self.inity} {self.initx} {self.endy} {self.endx} {self.initialOrientation}\n'
         out += "0 0"
         return out
+        
     def createGraph(self):
         for i in range(self.width):
             for j in range(self.length):
@@ -109,4 +110,3 @@ def generateRandomGraph(width,length,nblocked,filename = None):
     g =  Graph(initx,inity,endx,endy,width,length,initialOrientation,blockedList)
     g.createGraph()
     return g
-
