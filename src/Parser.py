@@ -28,7 +28,6 @@ class Parser:
                 elif ln == dim[1] :
                     row = line.split()
                     initX, initY, endX, endY = int(row[1]), int(row[0]), int(row[3]), int(row[2])
-                    print(initX, initY, endX, endY)
                     initOrientation = row[4]
                 else:
                     row = line.split()
@@ -39,5 +38,4 @@ class Parser:
         length = dim[1]
         return initX, initY, endX, endY, width, length, initOrientation, listBlocked
     
-
 
